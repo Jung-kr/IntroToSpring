@@ -1,6 +1,7 @@
 package com.jung.spring;
 
 import com.jung.spring.repository.JdbcMemberRepository;
+import com.jung.spring.repository.JdbcTemplateMemberRepository;
 import com.jung.spring.repository.MemberRepository;
 import com.jung.spring.repository.MemoryMemberRepository;
 import com.jung.spring.service.MemberService;
@@ -28,6 +29,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);    // 순수 Jdbc를 이용한 데이터 엑세스
+        //return new JdbcMemberRepository(dataSource);    // 순수 Jdbc를 이용한 데이터 엑세스
+        return new JdbcTemplateMemberRepository(dataSource);    // JdbcTemplate을 이용한 데이터 엑세스
     }
 }
